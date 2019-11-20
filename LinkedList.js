@@ -4,3 +4,12 @@ class Node {
 		this.next = null; // The next propery is initially set to null
 	}
 }
+
+class LinkedList {
+  constructor() {
+    this.head = null; // Points to the first node
+    this.tail = null; // Points to the last node
+    this.length = 0;
+  }
+
+}
