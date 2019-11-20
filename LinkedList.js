@@ -12,4 +12,16 @@ class LinkedList {
     this.length = 0;
   }
 
+  push(value) {
+    const node = new Node(value);
+    // Check if exist exists or not
+    if (!this.head) {
+      this.head = this.tail = node;
+    } else {
+      this.tail.next = node;
+      this.tail = node;
+      this.length++;
+    }
+  }
+
 }
