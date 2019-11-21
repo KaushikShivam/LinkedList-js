@@ -20,8 +20,21 @@ class LinkedList {
     } else {
       this.tail.next = node;
       this.tail = node;
-      this.length++;
     }
+    this.length++;
   }
 
+  pop() {
+    if (this.length === 0) return undefined;
+    let current = this.head, previous = this.head;
+    while(current.next) {
+      previous = current;
+      current = current.next;
+    }
+    this.tail = previous;
+    this.tail.next = null;
+    this.length--;
+    if (this.length === 0) this.head = this.tail = null;
+    return current;
+  }
 }
