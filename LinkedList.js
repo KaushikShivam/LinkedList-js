@@ -56,4 +56,15 @@ class LinkedList {
     this.length--;
     return currentHead;
   }
+
+  get(val) {
+    if (val >= this.length || val < 0) return undefined;
+    let currentHead = this.head;
+    while(val > 0) {
+      currentHead = currentHead.next
+      val--;
+    }
+    return currentHead;
+  }
+
 }
