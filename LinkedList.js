@@ -37,4 +37,23 @@ class LinkedList {
     if (this.length === 0) this.head = this.tail = null;
     return current;
   }
+
+  unshift(value) {
+    const node = new Node(value);
+    if (this.length === 0) {
+      this.head = this.tail = node;
+    } else {
+      node.next = this.head;
+      this.head = node;
+    }
+    this.length++;
+  }
+
+  shift() {
+    if (this.length === 0) return undefined;
+    const currentHead = this.head;
+    this.head = this.head.next;
+    this.length--;
+    return currentHead;
+  }
 }
