@@ -57,14 +57,55 @@ class LinkedList {
     return currentHead;
   }
 
-  get(val) {
-    if (val >= this.length || val < 0) return undefined;
+  get(index) {
+    if (index >= this.length || index < 0) return undefined;
     let currentHead = this.head;
-    while(val > 0) {
+    while(index > 0) {
       currentHead = currentHead.next
-      val--;
+      index--;
     }
     return currentHead;
   }
 
+  set(index, value) {
+    const node = this.get(index);
+    if (node) {
+      node.value = value;
+      return true;
+    }
+    return false;
+  }
+
+  insert(index, value) {
+    if (index < 0 || index > this.length) return false;
+    if (index === this.length) {
+      this.push(value);
+      return true;
+    }
+    if (index === 0) {
+      this.unshift(value);
+      return true;
+    }
+    const node = new Node(value);
+    // Get the element BEFORE the specified index
+    const previous = this.get(index - 1);
+    const temp = previous.next;
+    previous.next = node;
+    node.next = temp;
+    this.length++;
+    return true;
+  }
+
+  remove(index, value) {
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === this.length) return this.pop();
+    if (index === 0) return this.shift();
+    // Get the element BEFORE the specified index
+    const previous = this.get(index - 1);
+    const nodeToRemove = previous.next;
+    previous.next = nodeToRemove.next;
+    this.length--;
+    return nodeToRemove;
+  }
 }
+
